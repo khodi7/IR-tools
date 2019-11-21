@@ -7,7 +7,7 @@ def look_for(lst, word):
     """
     for i in range(len(lst)):
         line = decompose(lst[i])
-        if line[0].strip().lower() == word.lower():
+        if line[0].lower() == word.lower():
             return (True, i)
     return (False, -1)
 
@@ -18,12 +18,41 @@ def decompose(line):
     """
     line = line.strip("\n")
     line = line.split()
+    if len(line) == 0:
+        return [""]
     n_line = []
-    #Here, 
-    #We start reading the list "line" at the index 1
-    #because we know that the index 0 in "line" is the unit type.
+    n_line.append(line[0])
     for i in range(1, len(line)):
         n_line.append(line[i].split("="))
+    return n_line
+
+def decompose_b(line):
+    """
+    pre : "line" is a line from the "unit_specs.txt" file.
+    post : returns a list of the different values of the line.
+    """
+    line = line.strip("\n")
+    line = line.split()
+    if len(line) != 0:
+        to_return = {line[0] : {}}
+        for i in range(1, len(line)):
+            splitted = line[i].split("=")
+            to_return[line[0]].update({splitted[0] : splitted[1]})
+    else :
+        to_return = {}
+    return to_return
+
+def analize_spec_file():
+    """
+    pre : the unit_specs.txt file exists
+    post : returns a dictionnary based on the file's content.
+    It looks like this : {unit_type_1 : {char_1 : value_1, char_2 : value_2,...}, unit_type_2 : ...}
+    """
+    with open("unit_specs.txt", "r") as file:
+        content = {}
+        for line in file.readlines():
+            content.update((decompose_b(line)))
+    return content
 class Unit:
     def __init__(self, ut, us, mor, strenght = 1.0, dis = 0.0, exp = 0.0):
         """
@@ -81,9 +110,6 @@ class UnitSpecs:
     def defense(self):
         return self.__defense
     
-    def set_unit_type(self, ut):
-        self.__unit_type = ut
-    
     def set_discipline(self, d):
         self.__discipline = d
     
@@ -95,6 +121,7 @@ class UnitSpecs:
     
     def set_defense(self, de):
         self.__defense = de
+        
     def retrieve(self):
         """
         Use this function to get the caracteristics of a unit from the "unit_specs.txt" file.
@@ -102,9 +129,40 @@ class UnitSpecs:
         "self.type" is a type contained inside that file.
         post : modify the UnitSpecs obect according to the file's data.
         """
+        content = analize_spec_file().get(self.unit_type(), 0)
+        if content == 0:
+            print("There was a problem while retrieving {0} data".format(self.unit_type()))
+            return None
+        self.set_discipline(content["discipline"])
+        self.set_versus(content["versus"])
+        self.set_offence(content["offence"])
+        self.set_defense(content["defense"])
         
+    def pre_modify(self):
+        """
+        pre : -
+        post : returns a dictionnary containing the data to put in the unit_specs.txt file
+        """
+        if analize_spec_file().get(self.unit_type(), 0) == 0:
+            print("error")
+            return None
+        odic = analize_spec_file()
+        ndic = {self.unit_type() : {"discipline" : str(self.discipline()), "versus" : str(self.versus()), "offence" : str(self.offence()), "defense" : str(self.defense())}}
+        odic.update(ndic)
+        return odic
+    
     def modify(self):
         """
-        Use this function to modify the caracteristics of a certain unit type
+        pre : -
+        post : modify the data associated to the UnitSpecs's attribute __unit_type
+        in the unit_specs.txt file
         """
-        pass
+        content = self.pre_modify()
+        to_register = ""
+        for key in content:
+            to_register += key
+            for sub_key in content[key]:
+                to_register += " {0}={1}".format(sub_key, content[key][sub_key])
+            to_register += "\n\n"
+        with open("unit_specs.txt", "w") as file:
+            file.writelines(to_register)
