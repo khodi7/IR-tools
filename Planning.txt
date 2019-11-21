@@ -1,0 +1,41 @@
+1 unit vs 1 unit on land
+
+Object Unit 
+Attributes :
+	- unit type (str)
+	- unit specs (UnitSpecs)
+	- morale (float)
+	- strenght (float)
+	- base discipline (float)
+	- experience (float)
+
+unit specs should be defined when unit type is chosen and each times it is changed
+
+Object UnitSpecs
+Attributes :
+	- unit discipline (float)
+	- versus (Versus)
+	- unit offense (float)
+	- unit defense (float)
+
+Formulas :
+	total_damage :
+	offense_vs_defense = offense - defense
+	tactics = countering ? tactic_damage * tactic_effectiveness : countered ? -0.1 : 0.0
+	experience = 0.3 * experience_percent * (morale_damage_taken + strength_damage_taken) / 2.0
+	total_damage = base_damage * strength * (1 + discipline) * (1 + terrain_bonus) * (1 + versus) * (1 + tactics)
+	* (1 + offense_vs_defense) * (1 - experience) * (1 + damage_done) * (1 + damage_done)
+
+	moral damage :
+	morale_damage = total_damage * morale * (1 + morale_damage_done) * (1 + morale_damage_taken) * daily_multiplier * base_multiplier
+
+	strenght damage :
+	strength_damage = total_damage * (1 + strength_damage_done) * (1 + strength_damage_taken) * (1 + tactics) * daily_multiplier
+
+TODO :
+add a way to save data
+optimize the way unitspecs are retrieved
+add a way to select military traditions and techs
+add a graphic interface
+more than 1v1 combat
+naval combat
