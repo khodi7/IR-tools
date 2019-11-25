@@ -1,5 +1,3 @@
-import ast
-
 def look_for(lst, word):
     """
     pre : lst is a list of strings like those obtained through a "file.readlines()" function.
@@ -55,25 +53,21 @@ def analize_spec_file():
         for line in file.readlines():
             content.update((decompose_b(line)))
     return content
-    
 class Unit:
-    def __init__(self, ut, mor, strenght = 1.0, dis = 0.0, exp = 0.0):
+    def __init__(self, ut, us, mor, strenght = 1.0, dis = 0.0, exp = 0.0):
         """
         pre : ut is a string.
         mor, strenght, dis and exp are floats.
+        us is a UnitSpecs object.
         post : creates an object Unit.
         """
-        #Adjusting the unit to UnitSpecs
-        content = analize_spec_file()[ut]
         self.__morale = mor
         self.__strenght = strenght
-        self.__discipline = dis + float(content["discipline"])
+        self.__discipline = dis
         self.__experience = exp
         self.__unit_type = ut
-        self.__versus = ast.literal_eval(content["versus"])
-        self.__offense = float(content["offense"])
-        self.__defense = float(content["defense"])
-      
+        #add method to define UnitSpecs
+        
     def morale(self):
         return self.__morale
     
@@ -88,35 +82,7 @@ class Unit:
     
     def unit_type(self):
         return self.__unit_type
-    
-    def versus(self):
-        return self.__versus
-    
-    def offense(self):
-        return self.__offense
-    
-    def defense(self):
-        return self.__defense
-    
-    def set_morale(self, mor):
-        self.__morale = mor
         
-    def set_strenght(self, strenght):
-        self.__strenght = strenght
-    
-    def add_to_morale(self, to_add):
-        """
-        pre : to_add is a number
-        post : adds to_add to the Unit's __morale attribute
-        """
-        self.set_morale(self.morale() + to_add)
-        
-    def add_to_strenght(self, to_add):
-        """
-        pre : to_add is a number
-        post : adds to_add to the Unit's __strenght attribute
-        """
-        self.set_strenght(self.strenght() + to_add)
 class UnitSpecs:
     def __init__(self, ut):
         """
@@ -156,4 +122,47 @@ class UnitSpecs:
     def set_defense(self, de):
         self.__defense = de
         
+    def retrieve(self):
+        """
+        Use this function to get the caracteristics of a unit from the "unit_specs.txt" file.
+        pre : the "unit_specs.txt" file exists.
+        "self.type" is a type contained inside that file.
+        post : modify the UnitSpecs obect according to the file's data.
+        """
+        content = analize_spec_file().get(self.unit_type(), 0)
+        if content == 0:
+            print("There was a problem while retrieving {0} data".format(self.unit_type()))
+            return None
+        self.set_discipline(content["discipline"])
+        self.set_versus(content["versus"])
+        self.set_offence(content["offence"])
+        self.set_defense(content["defense"])
+        
+    def pre_modify(self):
+        """
+        pre : -
+        post : returns a dictionnary containing the data to put in the unit_specs.txt file
+        """
+        if analize_spec_file().get(self.unit_type(), 0) == 0:
+            print("error")
+            return None
+        odic = analize_spec_file()
+        ndic = {self.unit_type() : {"discipline" : str(self.discipline()), "versus" : str(self.versus()), "offence" : str(self.offence()), "defense" : str(self.defense())}}
+        odic.update(ndic)
+        return odic
     
+    def modify(self):
+        """
+        pre : -
+        post : modify the data associated to the UnitSpecs's attribute __unit_type
+        in the unit_specs.txt file
+        """
+        content = self.pre_modify()
+        to_register = ""
+        for key in content:
+            to_register += key
+            for sub_key in content[key]:
+                to_register += " {0}={1}".format(sub_key, content[key][sub_key])
+            to_register += "\n\n"
+        with open("unit_specs.txt", "w") as file:
+            file.writelines(to_register)
