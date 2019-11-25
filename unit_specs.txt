@@ -1,4 +1,4 @@
-archer discipline=64 versus=[] offence=5.67 defense=10.0
+archer discipline=64 versus=[] offense=5.67 defense=10.0
 
 light_cavalry discipline=2
 
