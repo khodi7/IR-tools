@@ -73,6 +73,8 @@ class Unit:
         self.__versus = ast.literal_eval(content["versus"])
         self.__offense = float(content["offense"])
         self.__defense = float(content["defense"])
+        self.__morale_damage_taken = 1 + float(content["morale_damage_taken"])
+        self.__strenght_damage_taken = 1 + float(content["strenght_damage_taken"])
       
     def getmorale(self):
         return self.__morale
@@ -97,6 +99,12 @@ class Unit:
     
     def getdefense(self):
         return self.__defense
+    
+    def getmorale_damage_taken(self):
+        return self.__morale_damage_taken
+    
+    def getstrenght_damage_taken(self):
+        return self.__strenght_damage_taken
     
     def setmorale(self, mor):
         self.__morale = mor
