@@ -1,32 +1,32 @@
 import ast
 
-def look_for(lst, word):
-    """
-    pre : lst is a list of strings like those obtained through a "file.readlines()" function.
-    word is a string.
-    post : returns a tuple (True, pos) where pos is the index of word in lst if word is in lst.
-    Returns a tuple (False, -1) otherwise.
-    """
-    for i in range(len(lst)):
-        line = decompose(lst[i])
-        if line[0].lower() == word.lower():
-            return (True, i)
-    return (False, -1)
-
-def decompose(line):
-    """
-    pre : "line" is a line from the "unit_specs.txt" file.
-    post : returns a list of the different values of the line.
-    """
-    line = line.strip("\n")
-    line = line.split()
-    if len(line) == 0:
-        return [""]
-    n_line = []
-    n_line.append(line[0])
-    for i in range(1, len(line)):
-        n_line.append(line[i].split("="))
-    return n_line
+# def look_for(lst, word):
+#     """
+#     pre : lst is a list of strings like those obtained through a "file.readlines()" function.
+#     word is a string.
+#     post : returns a tuple (True, pos) where pos is the index of word in lst if word is in lst.
+#     Returns a tuple (False, -1) otherwise.
+#     """
+#     for i in range(len(lst)):
+#         line = decompose(lst[i])
+#         if line[0].lower() == word.lower():
+#             return (True, i)
+#     return (False, -1)
+# 
+# def decompose(line):
+#     """
+#     pre : "line" is a line from the "unit_specs.txt" file.
+#     post : returns a list of the different values of the line.
+#     """
+#     line = line.strip("\n")
+#     line = line.split()
+#     if len(line) == 0:
+#         return [""]
+#     n_line = []
+#     n_line.append(line[0])
+#     for i in range(1, len(line)):
+#         n_line.append(line[i].split("="))
+#     return n_line
 
 def decompose_b(line):
     """
@@ -74,34 +74,34 @@ class Unit:
         self.__offense = float(content["offense"])
         self.__defense = float(content["defense"])
       
-    def morale(self):
+    def getmorale(self):
         return self.__morale
     
-    def strenght(self):
+    def getstrenght(self):
         return self.__strenght
     
-    def discipline(self):
+    def getdiscipline(self):
         return self.__discipline
     
-    def experience(self):
+    def getexperience(self):
         return self.__experience
     
-    def unit_type(self):
+    def getunit_type(self):
         return self.__unit_type
     
-    def versus(self):
+    def getversus(self):
         return self.__versus
     
-    def offense(self):
+    def getoffense(self):
         return self.__offense
     
-    def defense(self):
+    def getdefense(self):
         return self.__defense
     
-    def set_morale(self, mor):
+    def setmorale(self, mor):
         self.__morale = mor
         
-    def set_strenght(self, strenght):
+    def setstrenght(self, strenght):
         self.__strenght = strenght
     
     def add_to_morale(self, to_add):
