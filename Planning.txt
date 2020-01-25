@@ -11,13 +11,6 @@ Attributes :
 
 unit specs should be defined when unit type is chosen and each times it is changed
 
-Object UnitSpecs
-Attributes :
-	- unit discipline (float)
-	- versus (Versus)
-	- unit offense (float)
-	- unit defense (float)
-
 Formulas :
 	total_damage :
 	offense_vs_defense = offense - defense

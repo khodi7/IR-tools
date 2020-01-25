@@ -43,8 +43,8 @@ def decompose_b(line):
     else :
         to_return = {}
     return to_return
-
-def analize_spec_file():
+                            
+def analize_spec_file():    #TODO : optimize to do it only once at the start
     """
     pre : the unit_specs.txt file exists
     post : returns a dictionnary based on the file's content.
