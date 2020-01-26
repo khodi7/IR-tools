@@ -89,9 +89,34 @@ class Combat:
         #TODO add tactics modifier
         strenght_dmg = self.base_damage_done(attacker, defender) * defender.getstrenght_damage_taken() * 0.2
     
-    def target(self, pos, line):
-        pass
-    
+    def target(self, pos):
+        """
+        pre : pos is an int <= 30. It is a position in the attacker's line.
+        post : returns the new target of the attacking unit.
+        A new target is needed if the current target either :
+            - Doesn't exist
+            - Has a morale <= 0
+            - Isn't in range of the unit anymore. Will be implemented later.
+        """
+        flank_range = 1 #To modify later when unit range will be implemented.
+        attacking_line = self.getlines()[0]
+        defending_line = self.getlines()[1]
+        defending_unit = defending_line[initial_target_pos][0]
+        initial_target_pos = attacking_line[pos][1]
+        if attacking_line[pos][0] is not None:  #Checking if there's a unit at pos.
+            if initial_target_pos is not None and defending_unit.getmorale() > 0 and abs(initial_target_pos - pos) <= flank_range:  #If there's a need for a new target.
+                i = 0
+                while i <= flank_range:
+                                                        
+                    if pos + i <= 30 and pos + i >= 0:  #To avoid IndexError.
+                        if defending_line[pos + i][0] is not None:
+                            return (pos + i)
+                    if i > 0:
+                        i = -i
+                    else:
+                        i += 1
+            else:
+                return pos
     def refreshtargets(self):
         pass
     
