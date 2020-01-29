@@ -1,0 +1,19 @@
+archer discipline=0 versus={"archer" : 1.0, "camel_cavalry" : 0.9, "chariot" : 1.0, "heavy_cavalry" : 0.9, "heavy_infantry" : 1.1, "horse archer" : 1.0, "light_cavalry" : 0.9, "light_infantry" : 1.25, "war_elephant" : 1.0, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0.25 strenght_damage_taken = 0.0
+
+camel_cavalry discipline=0 versus={"archer" : 1.1, "camel_cavalry" : 1.0, "chariot" : 1.1, "heavy_cavalry" : 0.8, "heavy_infantry" : 0.9, "horse archer" : 1.1, "light_cavalry" : 1.0, "light_infantry" : 1.1, "war_elephant" : 0.5, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0 strenght_damage_taken = 0.0
+
+chariot discipline=0 versus={"archer" : 1.2, "camel_cavalry" : 0.9, "chariot" : 1.0, "heavy_cavalry" : 0.5, "heavy_infantry" : 0.9, "horse archer" : 0.5, "light_cavalry" : 1.1, "light_infantry" : 1.35, "war_elephant" : 0.5, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0 strenght_damage_taken = 0.0
+
+heavy_cavalry discipline=0 versus={"archer" : 1.5, "camel_cavalry" : 1.1, "chariot" : 1.25, "heavy_cavalry" : 1.0, "heavy_infantry" : 0.9, "horse archer" : 1.0, "light_cavalry" : 1.1, "light_infantry" : 1.25, "war_elephant" : 0.5, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0 strenght_damage_taken = 0.0
+
+heavy_infantry discipline=0 versus={"archer" : 1.0, "camel_cavalry" : 0.9, "chariot" : 1.25, "heavy_cavalry" : 1.2, "heavy_infantry" : 1.0, "horse archer" : 0.75, "light_cavalry" : 0.9, "light_infantry" : 1.2, "war_elephant" : 1.0, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = -0.1 strenght_damage_taken = 0.0
+
+heavy_cavalry discipline=0 versus={"archer" : 1.25, "camel_cavalry" : 0.9, "chariot" : 1.25, "heavy_cavalry" : 0.9, "heavy_infantry" : 1.25, "horse archer" : 1.0, "light_cavalry" : 0.9, "light_infantry" : 1.25, "war_elephant" : 0.8, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0.25 strenght_damage_taken = 0.0
+
+light_cavalry discipline=0 versus={"archer" : 1.25, "camel_cavalry" : 1.0, "chariot" : 1.25, "heavy_cavalry" : 0.8, "heavy_infantry" : 0.5, "horse archer" : 1.25, "light_cavalry" : 1.0, "light_infantry" : 1.25, "war_elephant" : 0.5, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0 strenght_damage_taken = 0.0
+
+light_infantry discipline=0 versus={"archer" : 0.9, "camel_cavalry" : 1.0, "chariot" : 0.9, "heavy_cavalry" : 0.75, "heavy_infantry" : 0.75, "horse archer" : 0.5, "light_cavalry" : 1.0, "light_infantry" : 1.0, "war_elephant" : 0.75, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = -0.25 strenght_damage_taken = 0.0
+
+supply_train discipline=0 versus={"archer" : 0.1, "camel_cavalry" : 0.1, "chariot" : 0.1, "heavy_cavalry" : 0.1, "heavy_infantry" : 0.1, "horse archer" : 0.1, "light_cavalry" : 0.1, "light_infantry" : 0.1, "war_elephant" : 0.1, "supply_train" : 1.0} offense=0 defense=0 morale_damage_taken = 1.0 strenght_damage_taken = 0.0
+
+war_elephant discipline=0 versus={"archer" : 1.5, "camel_cavalry" : 0.9, "chariot" : 1.5, "heavy_cavalry" : 0.9, "heavy_infantry" : 1.4, "horse archer" : 0.9, "light_cavalry" : 0.9, "light_infantry" : 1.3, "war_elephant" : 1.0, "supply_train" : 2.0} offense=0 defense=0 morale_damage_taken = 0 strenght_damage_taken = -0.5
