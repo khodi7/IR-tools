@@ -14,5 +14,22 @@ class Tile:
         other_modifiers (list) : list of Modifier's.
     """
     
+    def __init__(self, nam, prov, ter, trade_g, other = [], builds = [], pop = []):
+        """
+        Args:
+            builds (list of Buildings)
+            nam (str) : name
+            pop (list of ints) : pop
+            prov (Province) : province
+            ter (int) : terrain
+            trade_g (TradeGood) : trade_good
+        """
+        self._buildings = builds
+        self._name = nam
+        self._pop = pop
+        self._province = prov
+        self._terrain = ter
+        self._trade_good = trade_g
+        self._other_modifiers = other
     
     """
