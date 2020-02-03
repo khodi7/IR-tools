@@ -13,7 +13,7 @@ class Tile:
         other_modifiers (list of Modifiers)
     """
     
-    def __init__(self, nam, prov, ter, trade_g, other = [], builds = [], pop = []):
+    def __init__(self, nam, ter, trade_g, other = [], builds = [], pop = []):
         """
         Args:
             builds (list of Buildings)
@@ -36,6 +36,42 @@ class Tile:
         The amount of building a tile has cannot exceed its building capacity.
         """
         return self._buildings
+    
+    @buildings.setter
+    def buildings(self, nbuilds):
+        self._buildings = nbuilds
+        
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, nname):
+        self._name = nname
+        
+    @property
+    def pop(self):
+        return self._pop
+    
+    @pop.setter
+    def pop(self, npop):
+        self.pop = npop
+    
+    @property
+    def terrain(self):
+        return self._terrain
+    
+    @property
+    def trade_good(self):
+        return self._trade_good
+    
+    @property
+    def other_modifiers(self):
+        return self._other_modifiers
+    
+    @other_modifiers.setter
+    def other_modifiers(self, nmod):
+        self._other_modifiers = nmod
     
 class Settlement(Tile):
     pass
