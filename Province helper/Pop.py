@@ -41,6 +41,45 @@ class PopGroup:
     @property
     def base_output(self):
         return self._base_output
+    
+class PopOutput:
+    """Output of a pop.
+
+    Attributes :
+        commerce : commerce value
+        manpower : local manpower
+        research : research points
+        tax : base tax
+    """
+    
+    def __init__(self, com = 0, mp = 0, res = 0, tx = 0):
+        """
+        Args :
+            com : commerce
+            mp : manpower
+            res : research
+            tx : tax
+        """
+        self._commerce = com
+        self._manpower = mp
+        self._research = res
+        self._tax = tx
+    
+    @property
+    def commerce(self):
+        return self._commerce
+    
+    @property
+    def manpower(self):
+        return self._manpower
+    
+    @property
+    def research(self):
+        return self._research
+    
+    @property
+    def tax(self):
+        return self._tax
         
     
 class CitizensGroup(PopGroup):
