@@ -10,13 +10,13 @@ class PopGroup:
         base_output(float) : base output of one pop of the PopGroup
     """
     
-    def __init__(self, amount, culture, religion):
+    def __init__(self, amount, culture, religion, base_happiness, base_output):
         self._amount = amount
-        self._base_happiness = 0
+        self._base_happiness = base_happiness
         self._culture = culture
         self._religion = religion
         
-        self._base_output = 0.0
+        self._base_output = base_output
         
     @property
     def amount(self):
@@ -44,13 +44,23 @@ class PopGroup:
         
     
 class CitizensGroup(PopGroup):
-    pass
+    
+    def __init__(self, amount, culture, religion):
+        super().__init__(amount, culture, religion, 0.2, PopOutput(com = 0.01, res = 0.25))
 
 class FreemenGroup(PopGroup):
-    pass
+    
+    def __init__(self, amount, culture, religion):
+        super().__init__(amount, culture, religion, 0.25, PopOutput(mp = 0.01))
+
 
 class TribesmenGroup(PopGroup):
-    pass
+    
+    def __init__(self, amount, culture, religion):
+        super().__init__(amount, culture, religion, 0.2, PopOutput(mp = 0.005, tx = 0.015))
+
 
 class SlavesGroup(PopGroup):
-    pass
+    
+    def __init__(self, amount, culture, religion):
+        super().__init__(amount, culture, religion, 0.2, PopOutput(tx = 0.035))
