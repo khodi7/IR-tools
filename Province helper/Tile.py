@@ -1,3 +1,4 @@
+import Modifier
 import Pop
 class Tile:
     """The Tile represents a settlement or a city in Imperator: Rome (I:R).
