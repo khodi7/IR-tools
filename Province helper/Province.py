@@ -1,3 +1,7 @@
 import Tile
 class Province:
-    pass
+    """Imperator: Rome province.
+        
+    Attributes:
+        tiles(list of Tiles)
+    """
