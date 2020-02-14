@@ -6,7 +6,7 @@ class Tile:
     Attributes :
         buildings (list of Buildings) : buildings in the tile.
         name (str) : is the name of the tile.
-        pop (list of Pops)
+        pop (list of PopGroups)
         terrain (int) : is the index of the terrain type the tile is built on in the following list :
         ["Desert", "Farmland", "Forest", "Hills", "Jungle", "Marsh", "Mountains", "Plains"]
         trade_good (TradeGood) : tile's trade good.
@@ -19,7 +19,7 @@ class Tile:
         Args:
             builds (list of Buildings)
             nam (str) : name
-            pop (list of ints) : pop
+            pop (list of PopGroups) : pop
             prov (Province) : province
             ter (int) : terrain
             trade_g (TradeGood) : trade_good
