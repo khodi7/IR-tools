@@ -1,5 +1,7 @@
 import Modifier
 import Pop
+
+
 class Tile:
     """The Tile represents a settlement or a city in Imperator: Rome (I:R).
 
@@ -75,10 +77,19 @@ class Tile:
         self._other_modifiers = nmod
     
 class Settlement(Tile):
-    pass
+
+    @buildings.setter
+    def buildings(self, nbuilds):
+        if nbuilds.type == 1:
+            raise ValueError
+        self._buildings = nbuilds
 
 class City(Tile):
-    pass
+    @buildings.setter
+    def buildings(self, nbuilds):
+        if nbuilds.type == 2:
+            raise ValueError
+        self._buildings = nbuilds
 
 class Metropolis(City):
     pass
