@@ -1,3 +1,4 @@
 Add pop capacities
 Implement ratio handling
 Handle happyness
+Implement global modifiers
